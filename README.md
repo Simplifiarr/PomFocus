@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.png" alt="PomFocus - Work, game, rest. A Pomodoro rotation timer for WoW" width="100%"></p>
+
 # PomFocus
 
 A World of Warcraft (WoW: Forever / Mainline, Interface 16001) addon: a Pomodoro-style rotation timer with editable timers, combined minute / quest / task goals, and a flashing visual alarm.
