@@ -460,7 +460,7 @@ end)
 ------------------------------------------------------------------------
 local ROW_STEP = 32
 local setup = CreateFrame("Frame", "PomFocusSetup", UIParent, tmpl)
-setup:SetSize(610, 140 + MAX_ROWS * ROW_STEP + 100)
+setup:SetSize(650, 150 + 3 * ROW_STEP + 85)
 setup:SetBackdrop(DIALOG_BACKDROP)
 setup:SetFrameStrata("DIALOG")
 MakeMovable(setup, "setupPos")
@@ -520,11 +520,13 @@ local function BuildPanel(key, intro, startLabel, startFn, addLabel, newItem)
       end
     end
     p.add:SetEnabled(#list < MAX_ROWS)
+    -- size the window to the rows in use (no big empty gap)
+    setup:SetHeight(150 + math.max(#list, 3) * ROW_STEP + 85)
   end
 
   for i = 1, MAX_ROWS do
     local row = CreateFrame("Frame", nil, p)
-    row:SetSize(560, 26)
+    row:SetSize(600, 26)
     row:SetPoint("TOPLEFT", p, "TOPLEFT", 24, -150 - (i - 1) * ROW_STEP)
     local function At(w, numeric, x)
       local e = MakeEdit(row, w, numeric)
@@ -545,7 +547,7 @@ local function BuildPanel(key, intro, startLabel, startFn, addLabel, newItem)
     row.min = NumBox("min", COLS.min)
     row.quests = NumBox("quests", COLS.quests)
     row.tasks = NumBox("tasks", COLS.tasks)
-    row.msg = At(140, false, COLS.msg)
+    row.msg = At(185, false, COLS.msg)
     row.msg:SetScript("OnTextChanged", function(self, user)
       if user and List()[i] then List()[i].msg = self:GetText() end
     end)
