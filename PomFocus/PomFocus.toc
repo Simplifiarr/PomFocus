@@ -1,0 +1,7 @@
+## Interface: 16001
+## Title: PomFocus
+## Notes: Pomodoro-style rotation timer (work / game / rest) with editable steps, combined minute/quest/task goals, and a visual alarm.
+## Author: PomFocus
+## Version: 0.5.0
+## SavedVariables: PomFocusDB
+PomFocus.lua
