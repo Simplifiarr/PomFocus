@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1230"/>
+      <stop offset="1" stop-color="#0d0a18"/>
+    </linearGradient>
+    <radialGradient id="body" cx="0.36" cy="0.32" r="0.8">
+      <stop offset="0" stop-color="#ff5a3d"/>
+      <stop offset="0.35" stop-color="#e8321f"/>
+      <stop offset="0.75" stop-color="#bf1a10"/>
+      <stop offset="1" stop-color="#7d0a06"/>
+    </radialGradient>
+    <radialGradient id="rim" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0.78" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3a0300" stop-opacity="0.55"/>
+    </radialGradient>
+    <linearGradient id="lobe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a0600" stop-opacity="0.0"/>
+      <stop offset="0.5" stop-color="#5a0600" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#5a0600" stop-opacity="0.0"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f7a1c"/>
+      <stop offset="1" stop-color="#6bb534"/>
+    </linearGradient>
+    <linearGradient id="leafBack" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2d5a14"/>
+      <stop offset="1" stop-color="#4c8a24"/>
+    </linearGradient>
+    <linearGradient id="stem" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#355c15"/>
+      <stop offset="1" stop-color="#6a9a2c"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="soft2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+    <clipPath id="tomatoClip">
+      <path id="shape" d="M380 222 C345 196 290 184 238 204 C176 230 160 322 196 406 C228 480 310 526 380 526 C450 526 532 480 564 406 C600 322 584 230 522 204 C470 184 415 196 380 222 Z"/>
+    </clipPath>
+    <!-- sepal: pointing +x, curved tip -->
+    <path id="sepal" d="M0 0 C22 -26 70 -26 100 10 C76 8 60 26 0 10 Z"/>
+    <path id="sepalS" d="M0 0 C18 -20 54 -20 80 8 C60 6 48 20 0 8 Z"/>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+
+  <!-- app tile -->
+  <rect x="120" y="60" width="520" height="520" rx="150" fill="#7c3aed"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="392" cy="535" rx="190" ry="20" fill="#2a0a5e" opacity="0.55" filter="url(#shadow)"/>
+
+  <!-- tomato body -->
+  <use href="#shape" fill="url(#body)"/>
+  <g clip-path="url(#tomatoClip)">
+    <!-- soft lobes: subtle vertical creases -->
+    <ellipse cx="300" cy="380" rx="34" ry="150" fill="url(#lobe)" filter="url(#soft)"/>
+    <ellipse cx="470" cy="380" rx="34" ry="150" fill="url(#lobe)" filter="url(#soft)"/>
+    
+    <!-- edge darkening -->
+    <rect x="150" y="170" width="460" height="370" fill="url(#rim)"/>
+    <!-- bottom bounce light (purple-ish reflection from tile) -->
+    <ellipse cx="380" cy="520" rx="150" ry="34" fill="#ff7a5c" opacity="0.28" filter="url(#soft)"/>
+    <!-- dimple shadow around calyx -->
+    <ellipse cx="380" cy="228" rx="86" ry="34" fill="#4a0400" opacity="0.5" filter="url(#soft)"/>
+    <!-- main highlight -->
+    <ellipse cx="282" cy="292" rx="60" ry="34" transform="rotate(-38 282 292)" fill="#fff" opacity="0.5" filter="url(#soft2)"/>
+    <ellipse cx="268" cy="282" rx="30" ry="14" transform="rotate(-38 268 282)" fill="#fff" opacity="0.85" filter="url(#soft2)"/>
+    <!-- secondary rim light on right -->
+    <path d="M540 270 C566 320 560 380 536 430" fill="none" stroke="#ff8a6e" stroke-width="7" stroke-linecap="round" opacity="0.28" filter="url(#soft2)"/>
+  </g>
+
+  <!-- back sepals -->
+  <g transform="translate(380 214)">
+    <g fill="url(#leafBack)" stroke="#1f4009" stroke-width="1.5" stroke-linejoin="round">
+      <use href="#sepal" transform="rotate(-158) scale(1 1)"/>
+      <use href="#sepal" transform="rotate(-22) scale(1 -1)"/>
+      <use href="#sepalS" transform="rotate(-118) scale(1 1)"/>
+      <use href="#sepalS" transform="rotate(-62) scale(1 -1)"/>
+    </g>
+  </g>
+
+  <!-- stem -->
+  <path d="M378 218 C375 196 381 180 394 166" fill="none" stroke="#243f0c" stroke-width="17" stroke-linecap="round"/>
+  <path d="M378 218 C375 196 381 180 394 166" fill="none" stroke="url(#stem)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M374 205 C373 194 377 184 385 176" fill="none" stroke="#9cc95a" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- front sepals -->
+  <g transform="translate(380 218)">
+    <g fill="url(#leaf)" stroke="#254a0c" stroke-width="1.5" stroke-linejoin="round">
+      <use href="#sepal" transform="rotate(-188) scale(1 -1)"/>
+      <use href="#sepal" transform="rotate(8) scale(1 1)"/>
+      <use href="#sepalS" transform="rotate(-228) scale(1 -1)"/>
+      <use href="#sepalS" transform="rotate(48) scale(1 1)"/>
+      <use href="#sepalS" transform="rotate(-262) scale(1 -1)" opacity="0"/>
+    </g>
+    <!-- center nub -->
+    <ellipse cx="0" cy="2" rx="17" ry="9" fill="#4a8a22" stroke="#254a0c" stroke-width="1.5"/>
+    <!-- sepal midribs -->
+    <g stroke="#2b5a10" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.55">
+      <path d="M-8 4 C-40 4 -70 10 -92 20"/>
+      <path d="M8 4 C40 4 70 10 92 20"/>
+    </g>
+  </g>
+  <!-- stem base cap -->
+  <ellipse cx="379" cy="214" rx="11" ry="6" fill="#3d6d1a" stroke="#254a0c" stroke-width="1.5"/>
+
+  <!-- title -->
+  <text x="705" y="312" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="92" font-weight="600" fill="#ffffff" letter-spacing="-1">PomFocus</text>
+  <text x="702" y="364" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="31" fill="#c9b6f5">Work, game, rest.</text>
+  <text x="702" y="408" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="31" fill="#c9b6f5">A Pomodoro rotation timer for WoW</text>
+</svg>
