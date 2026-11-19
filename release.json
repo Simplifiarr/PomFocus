@@ -1,0 +1,13 @@
+{
+  "releases": [
+    {
+      "name": "PomFocus",
+      "version": "0.6.0",
+      "filename": "PomFocus-v0.6.0-forever.zip",
+      "nolib": false,
+      "metadata": [
+        { "flavor": "forever", "interface": 16001 }
+      ]
+    }
+  ]
+}
